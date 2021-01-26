@@ -787,6 +787,24 @@ private:
 #endif // OPTFLOW
 
 
+class TakeoffWater : public Mode {
+public:
+    //inherit constructor
+    using Mode::mode;
+
+    bool init(bool ignore_checks) override;
+    void run() override;
+
+    bool requires_GPS() const override { return true; }
+    bool has_manual_throttle() const override { return false; }
+    bool allows_arming(bool from_gcs) const override;
+    bool is_autopilot() const override { return true; }
+
+protected:
+    const char *name() const override { return "TAKEOFF_WATER"; }
+    const char *name4() const override { return "TOWA"; }
+}
+
 class ModeGuided : public Mode {
 
 public:
