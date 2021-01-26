@@ -927,6 +927,7 @@ private:
     ModeGuided mode_guided;
 #endif
     ModeLand mode_land;
+    TakeoffWater takeoff_water;
 #if MODE_LOITER_ENABLED == ENABLED
     ModeLoiter mode_loiter;
 #endif

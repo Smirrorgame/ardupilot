@@ -73,6 +73,11 @@ Mode *Copter::mode_from_mode_num(const Mode::Number mode)
             ret = &mode_land;
             break;
 
+        
+        case Mode::Number::TAKEOFF_WATER:
+            ret = &takeoff_water;
+            break;
+
 #if MODE_RTL_ENABLED == ENABLED
         case Mode::Number::RTL:
             ret = &mode_rtl;
