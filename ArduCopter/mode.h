@@ -790,7 +790,7 @@ private:
 class TakeoffWater : public Mode {
 public:
     //inherit constructor
-    using Mode::mode;
+    using Mode::Mode;
 
     bool init(bool ignore_checks) override;
     void run() override;
