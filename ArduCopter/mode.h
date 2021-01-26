@@ -803,7 +803,7 @@ public:
 protected:
     const char *name() const override { return "TAKEOFF_WATER"; }
     const char *name4() const override { return "TOWA"; }
-}
+};
 
 class ModeGuided : public Mode {
 
