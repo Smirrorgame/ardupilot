@@ -36,6 +36,7 @@ public:
         ZIGZAG    =    24,  // ZIGZAG mode is able to fly in a zigzag manner with predefined point A and point B
         SYSTEMID  =    25,  // System ID mode produces automated system identification signals in the controllers
         AUTOROTATE =   26,  // Autonomous autorotation
+        LAND_WATER =   27,  // Autonomous autorotation
     };
 
     // constructor
@@ -905,6 +906,34 @@ protected:
 
     const char *name() const override { return "LAND"; }
     const char *name4() const override { return "LAND"; }
+
+private:
+
+    void gps_run();
+    void nogps_run();
+};
+
+
+class ModeLandWater : public Mode {
+
+public:
+    // inherit constructor
+    using Mode::Mode;
+
+    bool init(bool ignore_checks) override;
+    void run() override;
+
+    bool requires_GPS() const override { return false; }
+    bool has_manual_throttle() const override { return false; }
+    bool allows_arming(bool from_gcs) const override { return false; };
+    bool is_autopilot() const override { return true; }
+
+    bool is_landing() const override { return true; };
+
+protected:
+
+    const char *name() const override { return "LAND_WATER"; }
+    const char *name4() const override { return "LAWA"; }
 
 private:
 
