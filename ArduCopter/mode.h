@@ -36,7 +36,7 @@ public:
         ZIGZAG    =    24,  // ZIGZAG mode is able to fly in a zigzag manner with predefined point A and point B
         SYSTEMID  =    25,  // System ID mode produces automated system identification signals in the controllers
         AUTOROTATE =   26,  // Autonomous autorotation
-        TAKEOFF_WATER =27,  // Starten vom Wasser
+        LAND_WATER =27,  // Starten vom Wasser
     };
 
     // constructor
@@ -787,7 +787,7 @@ private:
 #endif // OPTFLOW
 
 
-class TakeoffWater : public Mode {
+class ModeLandWater : public Mode {
 public:
     //inherit constructor
     using Mode::Mode;
@@ -797,13 +797,22 @@ public:
 
     bool requires_GPS() const override { return false; }
     bool has_manual_throttle() const override { return false; }
-    bool allows_arming(bool from_gcs) const override { return true; }
+    bool allows_arming(bool from_gcs) const override { return false; }
     bool is_autopilot() const override { return true; }
 
+    bool is_landing() const override { return true; }
+
+    void no_GPS();
+
 protected:
-    const char *name() const override { return "TAKEOFF_WATER"; }
-    const char *name4() const override { return "TOWA"; }
+    const char *name() const override { return "LAND_WATER"; }
+    const char *name4() const override { return "LAWA"; }
+
+private:
+    void gps_run();
+    void nogps_run();
 };
+
 
 class ModeGuided : public Mode {
 
