@@ -71,7 +71,7 @@ MOT_BAT_VOLT_MIN 9.6
 MOT_BAT_VOLT_MAX 12.8
 # flightmodes
 # switch 1 Circle
-# switch 2 LAND
+# switch 2 TAKEOFF_WATER
 # switch 3 RTL
 # switch 4 Auto
 # switch 5 Loiter
